@@ -1,0 +1,59 @@
+---
+import Welcome from '../components/Welcome.astro';
+import Layout from '../layouts/Layout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import HomePage from '../components/HomePage.astro';
+
+const projects = [
+	{
+		title: 'Project 1',
+		description: 'Description for project 1',
+	},
+	{
+		title: 'Project 2',
+		description: 'Description for project 2',
+	},
+	{
+		title: 'Project 3',
+		description: 'Description for project 3',
+	},
+	{
+		title: 'Project 4',
+		description: 'Description for project 4',
+	}
+];
+// Display components
+//<Welcome />
+---
+
+<Layout>
+<HomePage />
+	<section class="projects-section">
+		<h2>projects</h2>
+		<div class="projects-grid">
+			{projects.map((project) => (
+				<ProjectCard {...project} />
+			))}
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.projects-section {
+		padding: 2rem;
+		margin: 0 auto;
+		color: white;
+	}
+
+	.projects-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1.5rem;
+	}
+
+	@media (max-width: 768px) {
+		.projects-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
