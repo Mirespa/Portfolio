@@ -27,18 +27,24 @@ const projects = [
 ---
 
 <Layout>
-<HomePage />
-	<section class="projects-section">
-		<h2>projects</h2>
-		<div class="projects-grid">
-			{projects.map((project) => (
-				<ProjectCard {...project} />
-			))}
-		</div>
-	</section>
+	<div class="background">
+		<HomePage />
+			<section class="projects-section">
+				<h2>Projects</h2>
+				<div class="projects-grid">
+					{projects.map((project) => (
+						<ProjectCard {...project} />
+				))}
+			</div>
+		</section>
+	</div>
 </Layout>
 
 <style>
+	.background {
+		background: linear-gradient(#3a91fc 0%, #113086 100%)
+	}
+	
 	.projects-section {
 		padding: 2rem;
 		margin: 0 auto;
