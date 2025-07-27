@@ -4,6 +4,7 @@ import Layout from '../layouts/Layout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import HomePage from '../components/HomePage.astro';
 import About from '../components/About.astro';
+import SkillCard from '../components/SkillCard.astro';
 
 const projects = [
 	{
@@ -24,6 +25,33 @@ const projects = [
 	}
 ];
 
+const skillGroups = [
+	{
+		title: 'Languages',
+		skills: ['JavaScript', 'TypeScript', 'Python', 'Java', 'C', 'C++', 'Bash', 'PowerShell']
+	},	
+	{
+		title: 'Frontend',
+		skills: ['React', 'Vite', 'Next.js', 'Astro']
+	},
+	{
+		title: 'Backend',
+		skills: ['Node.js']
+	},
+	{
+		title: 'Databases',
+		skills: ['PostgreSQL', 'MongoDB']
+	},
+	{
+		title: 'Cloud & DevOps',
+		skills: ['AWS', 'Linux', 'Windows', 'Docker', 'CI/CD']
+	},
+	{
+		title: 'Other',
+		skills: ['Git', 'Figma', 'Agile Methodologies', 'UE5', 'Gimp']
+	}
+]
+
 ---
 
 <Layout>
@@ -37,6 +65,20 @@ const projects = [
 						<ProjectCard {...project} />
 				))}
 			</div>
+		</section>
+		<section class="skills-section">
+		<h2>Skills</h2>
+
+		{skillGroups.map((group) => (
+			<div class="skill-group">
+			<h3>{group.title}</h3>
+			<div class="skills-list">
+				{group.skills.map((skill) => (
+				<SkillCard skill={skill} />
+				))}
+			</div>
+			</div>
+		))}
 		</section>
 	</div>
 </Layout>
@@ -62,5 +104,21 @@ const projects = [
 		.projects-grid {
 			grid-template-columns: 1fr;
 		}
+	}
+
+	.skills-section {
+		padding: 2rem;
+		margin: 0 auto;
+		color: white;
+	}
+
+	.skill-group {
+		margin-bottom: 2rem;
+	}
+
+	.skills-list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
 	}
 </style>

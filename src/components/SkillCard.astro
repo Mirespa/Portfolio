@@ -1,0 +1,20 @@
+---
+const { skill } = Astro.props;
+---
+
+<div class ="skill-card">
+    {skill}
+</div>
+
+<style>
+    .skill-card {
+        background: #333;
+        padding: 1rem;
+        border-radius: 8px;
+        color: white;
+    }
+
+    .skill-card:hover {
+        transform: translateY(-1px);
+    }
+</style>
