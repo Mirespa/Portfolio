@@ -1,0 +1,28 @@
+---
+const { school, degree, years, description } = Astro.props;
+---
+
+<div class="education-card">
+    <h3>{school}</h3>
+    <p><strong>{degree}</strong> ({years})</p>
+    <p>{description}</p>
+</div>
+
+<style>
+    .education-card {
+        background: #333;
+        padding: 1rem;
+        border-radius: 8px;
+        color: white;
+    }
+
+    .education-card:hover {
+    transform: translateY(-5px);
+    }
+
+    .education-card img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+</style>

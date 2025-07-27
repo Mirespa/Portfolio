@@ -4,6 +4,7 @@ import ProjectCard from '../components/ProjectCard.astro';
 import Hero from '../components/Hero.astro';
 import About from '../components/About.astro';
 import SkillCard from '../components/SkillCard.astro';
+import EducationCard from '../components/EducationCard.astro';
 
 const projects = [
 	{
@@ -51,6 +52,21 @@ const skillGroups = [
 	}
 ]
 
+const education = [
+	{
+		school: 'University of Turku',
+		degree: 'Master of Science in Data analytics',
+		years: '2025 - present',
+		description: 'Specializing in data analytics and machine learning.'
+	},
+	{
+		school: 'University of Turku',
+		degree: 'Bachelor of Science in Computer Science',
+		years: '2022 - 2025',
+		description: 'Focused on software development and data structures.'
+	}
+];
+
 ---
 
 <Layout>
@@ -65,9 +81,17 @@ const skillGroups = [
 				))}
 			</div>
 		</section>
+		
+		<section class="education-section">
+			<h2>Education</h2>
+			<div class="education-grid">
+				{education.map((edu) => (
+					<EducationCard {...edu} />
+				))}
+		</section>
+
 		<section class="skills-section">
 		<h2>Skills</h2>
-
 		{skillGroups.map((group) => (
 			<div class="skill-group">
 			<h3>{group.title}</h3>
@@ -103,6 +127,17 @@ const skillGroups = [
 		.projects-grid {
 			grid-template-columns: 1fr;
 		}
+	}
+
+	.education-section {
+		padding: 2rem;
+		margin: 0 auto;
+		color: white;
+	}
+
+	.education-grid {
+		display: grid;
+		gap: 1.5rem;
 	}
 
 	.skills-section {
