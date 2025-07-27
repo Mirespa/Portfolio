@@ -3,6 +3,7 @@ import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import HomePage from '../components/HomePage.astro';
+import About from '../components/About.astro';
 
 const projects = [
 	{
@@ -22,13 +23,13 @@ const projects = [
 		description: 'Description for project 4',
 	}
 ];
-// Display components
-//<Welcome />
+
 ---
 
 <Layout>
 	<div class="background">
 		<HomePage />
+		<About />
 			<section class="projects-section">
 				<h2>Projects</h2>
 				<div class="projects-grid">
