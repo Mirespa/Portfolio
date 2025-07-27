@@ -1,8 +1,7 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
-import HomePage from '../components/HomePage.astro';
+import Hero from '../components/Hero.astro';
 import About from '../components/About.astro';
 import SkillCard from '../components/SkillCard.astro';
 
@@ -56,7 +55,7 @@ const skillGroups = [
 
 <Layout>
 	<div class="background">
-		<HomePage />
+		<Hero />
 		<About />
 			<section class="projects-section">
 				<h2>Projects</h2>
@@ -85,7 +84,7 @@ const skillGroups = [
 
 <style>
 	.background {
-		background: linear-gradient(#3a91fc 0%, #113086 100%)
+		background: linear-gradient(#226cc6 0%, #031c61 100%)
 	}
 	
 	.projects-section {
