@@ -1,7 +1,23 @@
 <div class="home-container">
     <div class="content">
         <h1>Miro Prusila</h1>
-        <p>Finland Github LinkedIn</p>
+
+        <div class="social-links">
+            <div class="location">
+                <img src="/icons/googlemaps.svg" alt="Location" />
+                <span>Finland</span>
+            </div>
+
+            <a href="https://github.com/Mirespa" target="_blank" aria-label="GitHub">
+                <img src="/icons/github.svg" alt="GitHub" />
+                <span>GitHub</span>
+            </a>
+
+            <a href="https://www.linkedin.com/in/miro-prusila-208b7b259/" target="_blank" aria-label="LinkedIn">
+                <img src="/icons/linkedin.svg" alt="LinkedIn" />
+                <span>LinkedIn</span>
+            </a>
+        </div>
     </div>
 </div>
 
@@ -25,5 +41,32 @@
 
     p {
         font-size: 1.5rem;
+    }
+
+    .social-links {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        color: white;
+    }
+
+    .social-links a,
+    .location {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        text-decoration: none;
+        color: white;
+        font-size: 1.2rem;
+    }
+
+    .social-links a:hover {
+        transform: scale(1.05);
+    }
+
+    .social-links img {
+        width: 24px;
+        height: 24px;
     }
 </style>
