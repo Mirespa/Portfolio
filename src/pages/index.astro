@@ -27,6 +27,10 @@ const sortedRepos = repos.sort((a, b) => {
 	return aIndex - bIndex; // Both in prefered order, sort by index
 });
 
+const imageMap = {
+	'fallback': '/images/fallback.jpg'
+}
+
 const skillGroups = [
 	{
 		title: 'Languages',
@@ -83,6 +87,7 @@ const education = [
 						title={repo.name}
 						description={repo.description}
 						url={repo.html_url}
+						image={imageMap[repo.name] ?? imageMap.fallback}
 						/>
 					))}
 				</div>

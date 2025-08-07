@@ -3,15 +3,17 @@ export interface Props {
     title: string;
     description: string;
     url: string;
+    image: string;
 }
 
-const { title, description, url } = Astro.props;
+const { title, description, url, image } = Astro.props;
 ---
 <a class="project-card" href={url} target="_blank" rel="noopener noreferrer">
-    <div>
+    <div class="text-content">
         <h3>{title}</h3>
         <p>{description}</p>
     </div>
+    <img class="project-image" src={image} alt={title} />
 </a>
 
 <style>
@@ -21,15 +23,28 @@ const { title, description, url } = Astro.props;
         border-radius: 8px;
         color: white;
         text-decoration: none;
+        display: flex;
+        max-height: 100px;
     }
 
     .project-card:hover {
-    transform: translateY(-5px);
+        transform: translateY(-5px);
     }
 
-    .project-card img {
-        width: 100%;
-        height: auto;
+    .text-content {
+    flex: 1;
+    }
+
+    .project-image {
+        height: 100%;
+        width: auto;
+        object-fit: cover;
         border-radius: 8px;
+        opacity: 0.2;
+    }
+
+    .project-card:hover .project-image {
+        opacity: 1;
+        transition: opacity 0.3s ease-in-out;
     }
 </style>
