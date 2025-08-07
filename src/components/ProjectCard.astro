@@ -1,10 +1,18 @@
 ---
-const { title, description, image } = Astro.props;
+export interface Props {
+    title: string;
+    description: string;
+    url: string;
+}
+
+const { title, description, url } = Astro.props;
 ---
-<div class="project-card">
-    <h3>{title}</h3>
-    <p>{description}</p>
-</div>
+<a class="project-card" href={url} target="_blank" rel="noopener noreferrer">
+    <div>
+        <h3>{title}</h3>
+        <p>{description}</p>
+    </div>
+</a>
 
 <style>
     .project-card {
@@ -12,6 +20,7 @@ const { title, description, image } = Astro.props;
         padding: 1rem;
         border-radius: 8px;
         color: white;
+        text-decoration: none;
     }
 
     .project-card:hover {

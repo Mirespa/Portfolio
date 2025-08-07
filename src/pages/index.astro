@@ -1,30 +1,31 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import ProjectCard from '../components/ProjectCard.astro';
 import Hero from '../components/Hero.astro';
 import About from '../components/About.astro';
-import SkillCard from '../components/SkillCard.astro';
+import { getRepos } from '../utils/github';
+import ProjectCard from '../components/ProjectCard.astro';
 import EducationCard from '../components/EducationCard.astro';
+import SkillCard from '../components/SkillCard.astro';
 import Contact from '../components/Contact.astro';
 
-const projects = [
-	{
-		title: 'Project 1',
-		description: 'Description for project 1',
-	},
-	{
-		title: 'Project 2',
-		description: 'Description for project 2',
-	},
-	{
-		title: 'Project 3',
-		description: 'Description for project 3',
-	},
-	{
-		title: 'Project 4',
-		description: 'Description for project 4',
-	}
-];
+const githubUsername = 'Mirespa';
+const repos = await getRepos(githubUsername);
+
+const preferedOrder = [
+    'Portfolio',
+    'Discord-bot'
+]
+
+const sortedRepos = repos.sort((a, b) => {
+	const aIndex = preferedOrder.indexOf(a.name);
+	const bIndex = preferedOrder.indexOf(b.name);
+	
+	if (aIndex === -1 && bIndex === -1) return 0; // Both not in prefered order
+	if (aIndex === -1) return 1; // a not in prefered order, b is
+	if (bIndex === -1) return -1; // b not in prefered order, a is
+	
+	return aIndex - bIndex; // Both in prefered order, sort by index
+});
 
 const skillGroups = [
 	{
@@ -75,13 +76,17 @@ const education = [
 		<Hero />
 		<About />
 			<section class="projects-section">
-				<h2>Projects</h2>
+				<h2>Projects & Courses</h2>
 				<div class="projects-grid">
-					{projects.map((project) => (
-						<ProjectCard {...project} />
-				))}
-			</div>
-		</section>
+					{sortedRepos.map((repo) => (
+						<ProjectCard
+						title={repo.name}
+						description={repo.description}
+						url={repo.html_url}
+						/>
+					))}
+				</div>
+			</section>
 		
 		<section class="education-section">
 			<h2>Education</h2>
