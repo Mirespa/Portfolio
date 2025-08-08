@@ -1,12 +1,14 @@
 ---
-const { school, degree, years, description } = Astro.props;
+const { school, degree, years, description, url } = Astro.props;
 ---
 
-<div class="education-card">
-    <h3>{school}</h3>
-    <p><strong>{degree}</strong> ({years})</p>
-    <p>{description}</p>
-</div>
+<a class="education-card" href={url} target="_blank" rel="noopener noreferrer">
+    <divs>
+        <h3><strong>{degree}</strong> ({years})</h3>
+        <p>{school}</p>
+        <p>{description}</p>
+    </div>
+</a>
 
 <style>
     .education-card {
@@ -14,6 +16,8 @@ const { school, degree, years, description } = Astro.props;
         padding: 1rem;
         border-radius: 8px;
         color: white;
+        text-decoration: none;
+        display: flex;
     }
 
     .education-card:hover {

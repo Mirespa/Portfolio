@@ -12,8 +12,9 @@ const githubUsername = 'Mirespa';
 const repos = await getRepos(githubUsername);
 
 const preferedOrder = [
-    'Portfolio',
-    'Discord-bot'
+    'Image-Recognition',
+    'Discord-bot',
+	'Portfolio'
 ]
 
 const sortedRepos = repos.sort((a, b) => {
@@ -63,13 +64,15 @@ const education = [
 		school: 'University of Turku',
 		degree: 'Master of Science in Data analytics',
 		years: '2025 - present',
-		description: 'Specializing in data analytics and machine learning.'
+		description: 'Specializing in data analytics and machine learning.',
+		url: 'https://www.utu.fi/fi/opiskelijaksi/tietotekniikka-tekniikan-kandidaatti-ja-diplomi-insinoori-3-v-2-v'
 	},
 	{
 		school: 'University of Turku',
 		degree: 'Bachelor of Science in Computer Science',
 		years: '2022 - 2025',
-		description: 'Focused on software development and data structures.'
+		description: 'Focused on software development and data structures.',
+		url: 'https://www.utu.fi/fi/opiskelijaksi/tietotekniikka-tekniikan-kandidaatti-ja-diplomi-insinoori-3-v-2-v'
 	}
 ];
 
@@ -149,7 +152,14 @@ const education = [
 
 	.education-grid {
 		display: grid;
+		grid-template-columns: repeat(2, 1fr);
 		gap: 1.5rem;
+	}
+
+	@media (max-width: 768px) {
+		.education-grid {
+			grid-template-columns: 1fr;
+		}
 	}
 
 	.skills-section {
