@@ -1,6 +1,11 @@
+---
+import NavBar from "../components/NavBar.astro"
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
+		<link rel="stylesheet" href="/src/styles/global.css" />
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" href="/icons/portfolio-bag.svg" />
@@ -8,15 +13,7 @@
 		<title>Miro's Portfolio site</title>
 	</head>
 	<body>
-		<slot />
+		<NavBar />
+		<slot />	
 	</body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>

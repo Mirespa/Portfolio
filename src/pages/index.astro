@@ -82,7 +82,7 @@ const education = [
 	<div class="background">
 		<Hero />
 		<About />
-			<section class="projects-section">
+			<section id="projects & courses" class="projects-section">
 				<h2>Projects & Courses</h2>
 				<div class="projects-grid">
 					{sortedRepos.map((repo) => (
@@ -96,7 +96,7 @@ const education = [
 				</div>
 			</section>
 		
-		<section class="education-section">
+		<section id="education" class="education-section">
 			<h2>Education</h2>
 			<div class="education-grid">
 				{education.map((edu) => (
@@ -104,7 +104,7 @@ const education = [
 				))}
 		</section>
 
-		<section class="skills-section">
+		<section id="skills" class="skills-section">
 		<h2>Skills</h2>
 		{skillGroups.map((group) => (
 			<div class="skill-group">
