@@ -28,7 +28,7 @@ const sortedRepos = repos.sort((a, b) => {
 	return aIndex - bIndex; // Both in prefered order, sort by index
 });
 
-const imageMap = {
+const imageMap: Record<string, string> = {
 	'fallback': '/images/fallback.jpg'
 }
 
