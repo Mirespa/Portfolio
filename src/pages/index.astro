@@ -79,11 +79,11 @@ const education = [
 ---
 
 <Layout>
-	<div class="background">
-		<Hero />
-		<About />
-			<section id="projects & courses" class="projects-section">
-				<h2>Projects & Courses</h2>
+	<Hero />
+	<About />
+		<section id="projects & courses" class="projects-section">
+			<h2>Projects & Courses</h2>
+			{sortedRepos.length > 0 ? (
 				<div class="projects-grid">
 					{sortedRepos.map((repo) => (
 						<ProjectCard
@@ -94,38 +94,37 @@ const education = [
 						/>
 					))}
 				</div>
-			</section>
-		
-		<section id="education" class="education-section">
-			<h2>Education</h2>
-			<div class="education-grid">
-				{education.map((edu) => (
-					<EducationCard {...edu} />
-				))}
+			) : (
+				<div>Sorry couldn't load projects from GitHub right now.</div>
+				<a href="https://github.com/Mirespa" target="_blank">View them direcly from GitHub :D</a>
+			)}
 		</section>
+	
+	<section id="education" class="education-section">
+		<h2>Education</h2>
+		<div class="education-grid">
+			{education.map((edu) => (
+				<EducationCard {...edu} />
+			))}
+	</section>
 
-		<section id="skills" class="skills-section">
-		<h2>Skills</h2>
-		{skillGroups.map((group) => (
-			<div class="skill-group">
-			<h3>{group.title}</h3>
-			<div class="skills-list">
-				{group.skills.map((skill) => (
-				<SkillCard skill={skill} />
-				))}
-			</div>
-			</div>
-		))}
-		</section>
-		<Contact />
-	</div>
+	<section id="skills" class="skills-section">
+	<h2>Skills</h2>
+	{skillGroups.map((group) => (
+		<div class="skill-group">
+		<h3>{group.title}</h3>
+		<div class="skills-list">
+			{group.skills.map((skill) => (
+			<SkillCard skill={skill} />
+			))}
+		</div>
+		</div>
+	))}
+	</section>
+	<Contact />
 </Layout>
 
 <style>
-	.background {
-		background: linear-gradient(#033a7a 0%, #031850 100%)
-	}
-	
 	.projects-section {
 		padding: 2rem;
 		margin: 0 auto;
