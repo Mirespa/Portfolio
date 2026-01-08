@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 #about,
 #projects\ \&\ courses,
 #education,
@@ -13,7 +19,7 @@ body {
     height: 100%;
     scroll-behavior: smooth;
 }
-¨
+
 a {
     text-decoration: none;
     color: white;
