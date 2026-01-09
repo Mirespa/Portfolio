@@ -81,8 +81,8 @@ const education = [
 <Layout>
 	<Hero />
 	<About />
-		<section id="projects & courses" class="projects-section">
-			<h2>Projects & Courses</h2>
+		<section id="projects" class="projects-section">
+			<h2>Projects</h2>
 			{sortedRepos.length > 0 ? (
 				<div class="projects-grid">
 					{sortedRepos.map((repo) => (
@@ -96,7 +96,7 @@ const education = [
 				</div>
 			) : (
 				<div>Sorry couldn't load projects from GitHub right now.</div>
-				<a href="https://github.com/Mirespa" target="_blank">View them direcly from GitHub :D</a>
+				<a href="https://github.com/Mirespa" target="_blank">Please refresh the page or view them direcly from GitHub :D</a>
 			)}
 		</section>
 	
