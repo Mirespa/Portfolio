@@ -2,35 +2,19 @@
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import About from '../components/About.astro';
-import { getRepos } from '../utils/github';
 import ProjectCard from '../components/ProjectCard.astro';
 import EducationCard from '../components/EducationCard.astro';
 import SkillCard from '../components/SkillCard.astro';
 import Contact from '../components/Contact.astro';
 
-const githubUsername = 'Mirespa';
-const repos = await getRepos(githubUsername);
-
-const preferedOrder = [
-    'Image-Recognition',
-    'Discord-bot',
-	'Portfolio'
+const featuredProjects = [
+	{
+		title: 'Home server',
+		description: 'I transformed an old PC into a robust, self-hosted home server environment built on TrueNAS. The project focuses on centralizing data storage, automating network-wide ad-blocking via Pi-hole, and providing localized media streaming with Jellyfin but there is more to come.',
+		url: '',
+		image: '/images/home_server_diagram.png'
+	}
 ]
-
-const sortedRepos = repos.sort((a, b) => {
-	const aIndex = preferedOrder.indexOf(a.name);
-	const bIndex = preferedOrder.indexOf(b.name);
-	
-	if (aIndex === -1 && bIndex === -1) return 0; // Both not in prefered order
-	if (aIndex === -1) return 1; // a not in prefered order, b is
-	if (bIndex === -1) return -1; // b not in prefered order, a is
-	
-	return aIndex - bIndex; // Both in prefered order, sort by index
-});
-
-const imageMap: Record<string, string> = {
-	'fallback': '/images/fallback.jpg'
-}
 
 const skillGroups = [
 	{
@@ -80,32 +64,21 @@ const education = [
 
 <Layout>
 	<Hero />
-	<About />
-		<section id="projects" class="projects-section">
-			<h2>Projects</h2>
-			{sortedRepos.length > 0 ? (
-				<div class="projects-grid">
-					{sortedRepos.map((repo) => (
-						<ProjectCard
-						title={repo.name}
-						description={repo.description}
-						url={repo.html_url}
-						image={imageMap[repo.name] ?? imageMap.fallback}
-						/>
-					))}
-				</div>
-			) : (
-				<div>Sorry couldn't load projects from GitHub right now.</div>
-				<a href="https://github.com/Mirespa" target="_blank">Please refresh the page or view them direcly from GitHub :D</a>
-			)}
-		</section>
-	
-	<section id="education" class="education-section">
-		<h2>Education</h2>
-		<div class="education-grid">
-			{education.map((edu) => (
-				<EducationCard {...edu} />
+	<About />	
+
+	<section id="projects" class="projects-section">
+		<h2>Featured Projects</h2>
+		<div class="featured-grid">
+			{featuredProjects.map((project) => (
+				<ProjectCard
+					{...project}
+					featured={true}
+					/>
 			))}
+		</div>
+		<div class="more-projects-link">
+			<a href="/more_projects">View more of my work →</a>
+		</div>
 	</section>
 
 	<section id="skills" class="skills-section">
@@ -121,6 +94,15 @@ const education = [
 		</div>
 	))}
 	</section>
+
+	<section id="education" class="education-section">
+	<h2>Education</h2>
+	<div class="education-grid">
+		{education.map((edu) => (
+			<EducationCard {...edu} />
+		))}
+	</section>
+
 	<Contact />
 </Layout>
 
@@ -131,14 +113,14 @@ const education = [
 		color: white;
 	}
 
-	.projects-grid {
+	.featured-grid {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 		gap: 1.5rem;
 	}
 
 	@media (max-width: 768px) {
-		.projects-grid {
+		.featured-grid {
 			grid-template-columns: 1fr;
 		}
 	}

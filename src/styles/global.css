@@ -5,11 +5,13 @@
 }
 
 #about,
-#projects\ \&\ courses,
+#projects,
 #education,
 #skills,
 #contact {
-  scroll-margin-top: 5rem;
+    margin-left: 20%;
+    margin-right: 20%;
+    scroll-margin-top: 5rem;
 }
 
 html,

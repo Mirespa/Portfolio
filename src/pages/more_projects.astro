@@ -1,8 +1,64 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import ProjectCard from '../components/ProjectCard.astro';
+import { getRepos } from '../utils/github';
+
+const githubUsername = 'Mirespa';
+const repos = await getRepos(githubUsername);
+
+const preferedOrder = [
+    'Image-Recognition',
+    'Discord-bot',
+	'Portfolio'
+]
+
+const sortedRepos = repos.sort((a, b) => {
+	const aIndex = preferedOrder.indexOf(a.name);
+	const bIndex = preferedOrder.indexOf(b.name);
+	
+	if (aIndex === -1 && bIndex === -1) return 0; // Both not in prefered order
+	if (aIndex === -1) return 1; // a not in prefered order, b is
+	if (bIndex === -1) return -1; // b not in prefered order, a is
+	
+	return aIndex - bIndex; // Both in prefered order, sort by index
+});
+
+const imageMap: Record<string, string> = {
+	'fallback': '/images/fallback.jpg'
+}
 ---
 
 <Layout>
-    <h1>More Projects</h1>
-    <p>Cool things coming :D</p>
+    <section id="projects" class="projects-section">
+        <h1>More of my Projects straight from Github</h1>
+        {sortedRepos.length > 0 ? (
+            <div class="projects-grid">
+                {sortedRepos.map((repo) => (
+                    <ProjectCard
+                    title={repo.name}
+                    description={repo.description}
+                    url={repo.html_url}
+                    image={imageMap[repo.name] ?? imageMap.fallback}
+                    />
+                ))}
+            </div>
+        ) : (
+            <div>Sorry couldn't load projects from GitHub right now.</div>
+            <a href="https://github.com/Mirespa" target="_blank">Please refresh the page or view them direcly from GitHub :D</a>
+        )}
+    </section>
 </Layout>
+
+<style>
+	.projects-section {
+		padding: 2rem;
+		margin: 0 auto;
+		color: white;
+	}
+
+	.projects-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1.5rem;
+	}
+</style>
